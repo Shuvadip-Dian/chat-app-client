@@ -4,7 +4,7 @@ import Messages from './Messages'
 import { useDispatch, useSelector } from 'react-redux'
 import {setSelectedUser} from '../store/userSlice'
 
-export default function MessageContainer() {
+export default function MessageContainer({socket}) {
   const { authUser,selectedUser, onlineUsers } = useSelector(store => store.user);
   const dispatch = useDispatch();
 
@@ -14,7 +14,7 @@ export default function MessageContainer() {
     <>
       {
         selectedUser !== null ? (
-          <div className='md:min-w-[550px] flex flex-col'>
+          <div className='md:min-w-[550px] h-[45vh] lg:h-[85vh] flex flex-col'>
             <div className='flex gap-2 items-center bg-zinc-800 text-white px-4 py-2 mb-2'>
               <div className={`avatar ${isOnline ? 'online' : ''}`}>
                 <div className='w-12 rounded-full'>
@@ -27,7 +27,7 @@ export default function MessageContainer() {
                 </div>
               </div>
             </div>
-            <Messages />
+            <Messages socket={socket}/>
             <SendInput />
           </div>
         ) : (

@@ -18,8 +18,8 @@ const userSlice = createSlice({
         setSelectedUser:(state,action)=>{
             state.selectedUser = action.payload;
         },
-        setOnlineUsers:(state,actions)=>{
-            state.onlineUsers = actions.payload
+        setOnlineUsers:(state,action)=>{
+            state.onlineUsers = action.payload
         }
     }
 })

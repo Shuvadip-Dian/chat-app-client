@@ -4,10 +4,10 @@ import useGetMessages from '../hooks/useGetMessages'
 import { useSelector } from 'react-redux';
 import useGetRealTimeMessage from '../hooks/useGetRealTimeMessage';
 
-export default function Messages() {
+export default function Messages({socket}) {
   
   useGetMessages();
-  useGetRealTimeMessage();
+  useGetRealTimeMessage(socket);
   const {messages} = useSelector(store=>store.message)
 
   return (

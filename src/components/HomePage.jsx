@@ -4,7 +4,7 @@ import MessageContainer from './MessageContainer'
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-export default function () {
+export default function ({socket}) {
   const { authUser } = useSelector(store => store.user);
   const navigate = useNavigate();
   useEffect(() => {
@@ -13,9 +13,9 @@ export default function () {
     }
   }, []);
   return (
-    <div className='flex sm:h-[450px] md:h-[550px] rounded-lg overflow-hidden bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0'>
+    <div className='flex lg:flex-row flex-col h-[85vh] sm:h-[450px] md:h-[550px] rounded-lg overflow-hidden bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0'>
         <Sidebar/>
-        <MessageContainer/>
+        <MessageContainer socket={socket}/>
     </div>
   )
 }
